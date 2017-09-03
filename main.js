@@ -1,3 +1,4 @@
+var imageplaceholder = 'https://www.axure.com/c/attachments/forum/7-0-general-discussion/3919d1401387174-turn-placeholder-widget-into-image-maintain-interactions-screen-shot-2014-05-29-10.46.57-am.png'
 function searchClicked(){
 	var textInput = document.querySelector('.searchbar input')
 	var url = 'http://api.tvmaze.com/search/shows?q='+ textInput.value
@@ -26,7 +27,7 @@ function loadContent(movies){
 		'<div class="movie-item">'
 			+'<div>'+
 				'<h3>'+movie.name+'</h3>'+
-				'<img src="'+movie.image.original+'">'+
+				'<img src="'+(movie.image&&movie.image.original || imageplaceholder)+'">'+
 				'<button onclick="showmodal('+movie.indexInStorage+')">Show More</button>'
 			+'</div>'+
 		'</div>';
@@ -46,7 +47,7 @@ function showmodal(index){
 			'<h1 onclick="closeModal()" >Click Here To Close</h1>'+
 			'<h3>'+data.name+'</h3>'+
 			'<div>'+
-				'<img src="'+data.image.original+'">'+
+				'<img src="'+(data.image&&data.image.original || imageplaceholder)+'">'+
 				'<a href="'+data.url+'">Link</a>'+
 			'<div>'+
 			'<h2> Ratings: '+data.rating.average+'</h2>'+
