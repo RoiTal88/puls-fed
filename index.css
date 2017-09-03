@@ -5,6 +5,7 @@
 html, body{
 	height : 100%;
 	background-color;
+	overflow-y: scroll;
 }
 
 header h1{
@@ -27,12 +28,12 @@ header h1{
 	padding-left: 10px;
 	border-radius: 10px;
 	font-size: 20px;
-	font-family: 
 }
 
 .searchbar button{
 	width : 10%;
 	border-radius: 10px;
+	font-size: 20px;
 }
 
 .searchbar button:hover{
@@ -43,6 +44,7 @@ header h1{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	overflow-y: scroll;
 }
 
 .movie-item{
@@ -68,7 +70,7 @@ header h1{
 }
 
 .movie-item > div > button{
-	position: absolute;
+	display: block;
 	height: 15%;
 	bottom :5%;
 	margin : 0 auto;
@@ -76,6 +78,10 @@ header h1{
 	background-color: #42f492;
 	border-radius: 5px;
 	color : #fff;
+}
+
+.movie-item > div > button:hover{
+	background-color: #0091cc;
 }
 
 #modal{
@@ -97,6 +103,7 @@ header h1{
 	margin: 0 auto;
 	margin-top: 10%;
 	padding: 20px;
+	overflow: scroll;
 
 }
 
@@ -109,12 +116,54 @@ header h1{
 }
 
 .modalcontent h3, h2 ,a {
+	display: block;
 	text-align: center;
 }
 
 .modalcontent img {
 	width : 100px;
 	height : 100px;
+	display: block;
+	margin: 10px auto; 
+}
+
+.movie-item img{
+	width : 70%;
+	height : 50%;
+	display: block;
+	margin: 5px auto;
+
+}
+
+@media (max-width: 1300px) { 
+	.movie-item{
+		width : 30%;
+		padding-top: 30%;
+	}
+
+	.searchbar input{
+		width : 60%;
+		font-size: 14px;
+	}
+
+	.searchbar button{
+		width : 30%;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 800px) { 
+	.movie-item{
+		width : 40%;
+		padding-top: 40%;
+	}
+}
+
+@media (max-width: 600px) { 
+	.movie-item{
+		width : 90%;
+		padding-top: 90%;
+	}
 }
 
 

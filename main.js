@@ -13,9 +13,6 @@ function searchClicked(){
 	.catch(function(err){
 		alert(err.message)
 	})
-
-	
-
 }
 
 function loadContent(movies){
@@ -29,6 +26,7 @@ function loadContent(movies){
 		'<div class="movie-item">'
 			+'<div>'+
 				'<h3>'+movie.name+'</h3>'+
+				'<img src="'+movie.image.original+'">'+
 				'<button onclick="showmodal('+movie.indexInStorage+')">Show More</button>'
 			+'</div>'+
 		'</div>';
@@ -41,16 +39,16 @@ function loadContent(movies){
 
 function showmodal(index){
 	var data = JSON.parse(window.localStorage.movies)[index]
-
-	console.log(data)
 	var modalSelector =document.querySelector('#modal')
 	modalSelector.style.visibility = 'visible'
 	var contentHTML = 
 		'<div class="modalcontent" >'+
 			'<h1 onclick="closeModal()" >Click Here To Close</h1>'+
 			'<h3>'+data.name+'</h3>'+
-			'<img src="'+data.image.original+'">'+
-			'<a href="'+data.url+'">Link</a>'+
+			'<div>'+
+				'<img src="'+data.image.original+'">'+
+				'<a href="'+data.url+'">Link</a>'+
+			'<div>'+
 			'<h2> Ratings: '+data.rating.average+'</h2>'+
 			data.summary+
 
