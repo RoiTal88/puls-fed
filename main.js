@@ -1,15 +1,16 @@
 var imageplaceholder = 'https://www.axure.com/c/attachments/forum/7-0-general-discussion/3919d1401387174-turn-placeholder-widget-into-image-maintain-interactions-screen-shot-2014-05-29-10.46.57-am.png'
+var __movies = []
 function searchClicked(){
 	var textInput = document.querySelector('.searchbar input')
 	var url = 'http://api.tvmaze.com/search/shows?q='+ textInput.value
 	axios.get(url).then(function(result){
-		var movies = result.data.map(function(item, index){ 
+		__movies = result.data.map(function(item, index){ 
 			item.show.indexInStorage = index
 			return item.show 
 		})
-		if(movies.length == 0) return alert('No result found');
+		if(__movies.length == 0) return alert('No result found');
 		textInput.value = '';
-		loadContent(movies)
+		loadContent()
 	})
 	.catch(function(err){
 		alert(err.message)
@@ -17,18 +18,14 @@ function searchClicked(){
 }
 
 function loadContent(movies){
-	console.log(movies)
-	window.localStorage.pageCounter = 0
-	window.localStorage.movies =JSON.stringify(movies)
 	var contentSelector = document.querySelector("#content")
 	var contentHTML = ""
-	movies.forEach(function(movie){
+	__movies.forEach(function(movie){
 		var element = 
-		'<div class="movie-item">'
+		'<div class="movie-item" onclick="showmodal('+movie.indexInStorage+')">'
 			+'<div>'+
 				'<h3>'+movie.name+'</h3>'+
-				'<img src="'+(movie.image&&movie.image.original || imageplaceholder)+'">'+
-				'<button onclick="showmodal('+movie.indexInStorage+')">Show More</button>'
+				'<img src="'+(movie.image&&movie.image.original || imageplaceholder)+'">'
 			+'</div>'+
 		'</div>';
 
@@ -39,7 +36,8 @@ function loadContent(movies){
 }
 
 function showmodal(index){
-	var data = JSON.parse(window.localStorage.movies)[index]
+	var data = __movies[index]
+	console.log(data)
 	var modalSelector =document.querySelector('#modal')
 	modalSelector.style.visibility = 'visible'
 	var contentHTML = 
@@ -51,6 +49,7 @@ function showmodal(index){
 				'<a href="'+data.url+'">Link</a>'+
 			'<div>'+
 			'<h2> Ratings: '+data.rating.average+'</h2>'+
+			'<h2> Generes: '+(data.genres&&data.genres.join(' ') || 'N/A')+'</h2>'+
 			data.summary+
 
 		'</div>'
