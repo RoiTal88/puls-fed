@@ -1,0 +1,123 @@
+*{
+	margin: 0;
+	padding : 0;
+}
+html, body{
+	height : 100%;
+	background-color;
+}
+
+header h1{
+	background-color: #333;
+	text-align: center;
+	line-height: 70px;
+	color : #007f00;
+}
+
+.searchbar{
+	display: flex;
+	padding : 20px 10%;
+	justify-content: space-around;
+
+}
+
+.searchbar input{
+	width : 80%;
+	height : 50px;
+	padding-left: 10px;
+	border-radius: 10px;
+	font-size: 20px;
+	font-family: 
+}
+
+.searchbar button{
+	width : 10%;
+	border-radius: 10px;
+}
+
+.searchbar button:hover{
+	background-color: #0091cc;
+}
+
+#content{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.movie-item{
+	position: relative;
+	width : 20%;
+	padding-top: 20%;
+	margin : 5px;
+	background: linear-gradient(0deg, #aaa, #eee);
+}
+
+.movie-item > div{
+	position: absolute;
+	padding: 0 5%;
+	width : 90%;
+	height: 100%;
+	top: 0;
+	left:0;
+}
+
+.movie-item > div > h3{
+	padding-top: 50px;
+	text-align: center;
+}
+
+.movie-item > div > button{
+	position: absolute;
+	height: 15%;
+	bottom :5%;
+	margin : 0 auto;
+	padding: 5px;
+	background-color: #42f492;
+	border-radius: 5px;
+	color : #fff;
+}
+
+#modal{
+	position: absolute;
+	top: 0;
+	left:0;
+	right : 0;
+	bottom : 0;
+	width:  100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	visibility: hidden;
+}
+
+.modalcontent{
+	width: 50%;
+	height: 50%;
+	background-color: #555;
+	margin: 0 auto;
+	margin-top: 10%;
+	padding: 20px;
+
+}
+
+.modalcontent h1 {
+	text-align: center;
+	color : #fff;
+	line-height: 70px;
+	background-color: #0091cc;
+	margin-bottom: 50px;
+}
+
+.modalcontent h3, h2 ,a {
+	text-align: center;
+}
+
+.modalcontent img {
+	width : 100px;
+	height : 100px;
+}
+
+
+
+
+
