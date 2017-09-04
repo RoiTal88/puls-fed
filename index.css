@@ -135,6 +135,17 @@ header h1{
 
 }
 
+.cast-container{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.person{
+	width : 100px;
+	height : 100px;
+	margin: 5px;
+}
+
 @media (max-width: 1300px) { 
 	.movie-item{
 		width : 30%;

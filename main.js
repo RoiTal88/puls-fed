@@ -37,7 +37,19 @@ function loadContent(movies){
 
 function showmodal(index){
 	var data = __movies[index]
-	console.log(data)
+	var castUrl = 'http://api.tvmaze.com/shows/'+data.id+'/cast'
+
+	axios.get(castUrl).then(function(result){
+		data.cast = result.data
+		putContentInModal(data)
+	}).catch(function(err){
+		putContentInModal(data)
+	})
+
+	
+}
+
+function putContentInModal(data){
 	var modalSelector =document.querySelector('#modal')
 	modalSelector.style.visibility = 'visible'
 	var contentHTML = 
@@ -51,10 +63,35 @@ function showmodal(index){
 			'<h2> Ratings: '+data.rating.average+'</h2>'+
 			'<h2> Generes: '+(data.genres&&data.genres.join(' ') || 'N/A')+'</h2>'+
 			data.summary+
+			'<h3>cast</h3>'+
+			'<div class="cast-container">'+
+				formatCast(data.cast)+
+			'<div>'+
+				
 
 		'</div>'
 
 	modalSelector.innerHTML = contentHTML
+}
+
+function formatCast(cast){
+	if(!cast) return '';
+	
+	var contentHTML = ""
+	cast.forEach(function(person){
+		var personImage = person.person.image
+		var personHTML =  
+
+			'<div class="person">'+
+				'<img src="'+(personImage&&personImage.original || '') +'" alt="'+(personImage&&personImage.medium || '')+'"/>'+
+				'<p>'+person.person.name+'</p>'+
+				'<p>As</p>'+
+				'<p>'+person.character.name+'</p>'+
+			'</div>'
+		contentHTML += personHTML
+	})
+
+	return contentHTML
 }
 
 function closeModal(){
