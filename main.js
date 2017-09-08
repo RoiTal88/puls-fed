@@ -67,10 +67,8 @@ function putContentInModal(data){
 			'<div class="cast-container">'+
 				formatCast(data.cast)+
 			'<div>'+
-				
-
 		'</div>'
-
+	modalSelector.style.opacity = 1;
 	modalSelector.innerHTML = contentHTML
 }
 
@@ -96,7 +94,10 @@ function formatCast(cast){
 
 function closeModal(){
 	var modalSelector =document.querySelector('#modal')
-	modalSelector.innerHTML = "";
-	modalSelector.style.visibility = 'hidden'
+	modalSelector.style.opacity = 0;
+	setTimeout(function(){
+		modalSelector.innerHTML = "";
+		modalSelector.style.visibility = 'hidden'
+	}, 1000)
 }
 

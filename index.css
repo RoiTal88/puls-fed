@@ -52,7 +52,12 @@ header h1{
 	width : 20%;
 	padding-top: 20%;
 	margin : 5px;
-	background: linear-gradient(0deg, #aaa, #eee);
+	background: #aaa;
+	transition: background 1s;
+}
+
+.movie-item:hover{
+	background: #0091cc;
 }
 
 .movie-item > div{
@@ -94,12 +99,14 @@ header h1{
 	height: 100%;
 	background-color: rgba(0,0,0,0.5);
 	visibility: hidden;
+	opacity: 0;
+	transition: opacity 1s;
 }
 
 .modalcontent{
 	width: 50%;
 	height: 50%;
-	background-color: #555;
+	background-color: #aaa;
 	margin: 0 auto;
 	margin-top: 10%;
 	padding: 20px;
@@ -115,14 +122,14 @@ header h1{
 	margin-bottom: 50px;
 }
 
-.modalcontent h3, h2 ,a {
+.modalcontent h3, h2 ,a ,p{
 	display: block;
 	text-align: center;
 }
 
 .modalcontent img {
-	width : 100px;
-	height : 100px;
+	width : 150px;
+	height : 150px;
 	display: block;
 	margin: 10px auto; 
 }
@@ -132,18 +139,23 @@ header h1{
 	height : 50%;
 	display: block;
 	margin: 5px auto;
-
 }
+
+
 
 .cast-container{
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .person{
-	width : 100px;
-	height : 200px;
+	width : 150px;
 	margin: 5px;
+}
+
+.person img{
+	border-radius: 50%;
 }
 
 @media (max-width: 1300px) { 
